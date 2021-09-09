@@ -5,20 +5,26 @@
     <h1 class="h2">My Posts</h1>
 </div>
 
+@if (session()->has('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+    </div>
+@endif
+
 <div class="table-responsive col-lg-10">
     <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Add New Posts</a>
     <table class="table table-striped table-sm">
-      <thead>
+    <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">Title</th>
-          <th scope="col">Category</th>
-          <th scope="col">Action</th>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Category</th>
+            <th scope="col">Action</th>
         </tr>
-      </thead>
-      <tbody>
-          @foreach ($posts as $post )
-          <tr>
+    </thead>
+    <tbody>
+        @foreach ($posts as $post )
+        <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $post->title }}</td>
             <td>{{ $post->category->name }}</td>
@@ -27,10 +33,10 @@
                 <a href="" class="badge bg-warning"><span data-feather="edit"></span></a>
                 <a href="" class="badge bg-danger"><span data-feather="x-circle"></span></a>
             </td>
-          </tr>
-          @endforeach
-      </tbody>
+        </tr>
+        @endforeach
+    </tbody>
     </table>
-  </div>
+</div>
 
 @endsection
